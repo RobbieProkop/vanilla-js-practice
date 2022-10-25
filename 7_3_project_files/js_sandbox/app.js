@@ -4,6 +4,23 @@ const loadData = () => {
 
   //Open
   xhr.open("GET", "data.txt", true);
+
+  // used for spinners and loaders
+  xhr.onprogress = function () {
+    // some spinner can go in here
+  };
+
+  xhr.onload = function () {
+    if (this.status !== 200) {
+      return console.log("uh oh");
+    }
+    console.log(this.responseText);
+  };
+
+  xhr.onerror = () => {
+    console.log("Some error");
+  };
+  xhr.send();
 };
 
-document.getElementById("button").addEventListener("click", loadData);
+document.getElementById("button").addEventListener("click", loadData());
