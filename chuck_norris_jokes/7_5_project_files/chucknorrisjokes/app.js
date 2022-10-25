@@ -1,31 +1,34 @@
-document.querySelector('.get-jokes').addEventListener('click', getJokes);
+const getJokes = (e) => {
+  e.preventDefault();
 
-function getJokes(e) {
   const number = document.querySelector('input[type="number"]').value;
 
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', `http://api.icndb.com/jokes/random/${number}`, true);
+  // THIS WILL CAUSE A CORS ERROR
+  xhr.open("GET", `http://api.icndb.com/jokes/random/${number}`, true);
 
-  xhr.onload = function() {
-    if(this.status === 200) {
-      const response = JSON.parse(this.responseText);
-      
-      let output = '';
-
-      if(response.type === 'success') {
-        response.value.forEach(function(joke){
-          output += `<li>${joke.joke}</li>`;
-        });
-      } else {
-        output += '<li>Something went wrong</li>';
-      }
-
-      document.querySelector('.jokes').innerHTML = output;
+  xhr.onload = function () {
+    if (this.status !== 200) {
+      return console.log("Shit, your status is no good");
     }
-  }
+    const res = JSON.parse(this.responseText);
+
+    let output = "";
+
+    if (res.type !== "success") {
+      output += "<li>Shit went wrong</li>";
+      return output;
+    }
+
+    res.value.forEach((joke) => {
+      output += `<li>${joke.joke}</li>`;
+    });
+
+    document.querySelector(".jokes").innerHTML = output;
+  };
 
   xhr.send();
+};
 
-  e.preventDefault();
-}
+document.querySelector(".get-jokes").addEventListener("click", getJokes);
