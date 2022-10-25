@@ -15,6 +15,9 @@ const loadData = () => {
       return console.log("uh oh");
     }
     console.log(this.responseText);
+    document.getElementById(
+      "output"
+    ).innerHTML = `<h1>${this.responseText}</h1>`;
   };
 
   xhr.onerror = () => {
