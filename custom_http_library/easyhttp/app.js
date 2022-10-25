@@ -38,9 +38,9 @@ const data = {
 // });
 
 // delete post
-http.delete("https://jsonplaceholder.typicode.com/posts/1", (err, res) => {
-  if (err) {
-    return console.log("error :>> ", err);
-  }
-  console.log("res :>> ", res);
-});
+// http.delete("https://jsonplaceholder.typicode.com/posts/1", (err, res) => {
+//   if (err) {
+//     return console.log("error :>> ", err);
+//   }
+//   console.log("res :>> ", res);
+// });
