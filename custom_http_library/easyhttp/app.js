@@ -30,7 +30,15 @@ const data = {
 // });
 
 //update post
-http.put("https://jsonplaceholder.typicode.com/posts", data, (err, res) => {
+// http.put("https://jsonplaceholder.typicode.com/posts/1", data, (err, res) => {
+//   if (err) {
+//     return console.log("error :>> ", err);
+//   }
+//   console.log("res :>> ", res);
+// });
+
+// delete post
+http.delete("https://jsonplaceholder.typicode.com/posts/1", (err, res) => {
   if (err) {
     return console.log("error :>> ", err);
   }
