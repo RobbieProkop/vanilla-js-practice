@@ -1,4 +1,4 @@
-// fetch
+// fetch local txt file
 const getText = () => {
   fetch("test.txt")
     .then((res) => {
@@ -10,16 +10,33 @@ const getText = () => {
     .catch((err) => console.log("err :>> ", err));
 };
 
+//fetch local json file
 const getJSON = () => {
   fetch("posts.json")
     .then((res) => res.json())
-    .then((data) => (document.getElementById("output").innerHTML = data))
+    .then((data) => {
+      let output = "";
+      data.forEach((post) => {
+        output += `<li>${post.title}</li>`;
+      });
+
+      document.getElementById("output").innerHTML = output;
+    })
     .catch((err) => console.log("err >> ", err));
 };
+
+//fetch external api
 const getAPI = () => {
   fetch("https://jsonplaceholder.typicode.com/posts")
     .then((res) => res.json())
-    .then((data) => (document.getElementById("output").innerHTML = data))
+    .then((data) => {
+      let output = "";
+      data.forEach((post) => {
+        output += `<li>${post.title}</li>`;
+      });
+
+      document.getElementById("output").innerHTML = output;
+    })
     .catch((err) => console.log("err :>> ", err));
 };
 
