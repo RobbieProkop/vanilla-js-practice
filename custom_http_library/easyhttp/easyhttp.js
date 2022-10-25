@@ -9,9 +9,9 @@ easyHTTP.prototype.get = function (url, callback) {
   let self = this;
   this.http.onload = function () {
     if (self.http.status !== 200) {
-      return console.log("not working");
+      return callback("Error: " + self.http.status);
     }
-    callback(self.http.responseText);
+    callback(null, self.http.responseText);
   };
 
   this.http.send();
