@@ -27,12 +27,12 @@ const getJSON = () => {
 
 //fetch external api
 const getAPI = () => {
-  fetch("https://jsonplaceholder.typicode.com/posts")
+  fetch("https://api.github.com/users")
     .then((res) => res.json())
     .then((data) => {
       let output = "";
-      data.forEach((post) => {
-        output += `<li>${post.title}</li>`;
+      data.forEach((user) => {
+        output += `<li>${user.login}</li>`;
       });
 
       document.getElementById("output").innerHTML = output;
