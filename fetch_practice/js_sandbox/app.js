@@ -30,6 +30,9 @@ const getAPI = () => {
   fetch("https://api.github.com/users")
     .then((res) => res.json())
     .then((data) => {
+      if (!data.ok) {
+        throw new Error(data.error);
+      }
       let output = "";
       data.forEach((user) => {
         output += `<li>${user.login}</li>`;
