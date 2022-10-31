@@ -34,3 +34,29 @@ const homeState = function (page) {
     </div>
   `;
 };
+
+//About State
+const aboutState = function (page) {
+  document.getElementById("heading").textContent = "About Us";
+  document.querySelector("#heading").innerHTML = `
+    <p>This is the about page</p>
+  `;
+};
+
+//About State
+const contactState = function (page) {
+  document.getElementById("heading").textContent = "Contact Us";
+  document.querySelector("#heading").innerHTML = `
+    <form>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  `;
+};
