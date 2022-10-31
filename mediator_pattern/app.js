@@ -8,7 +8,7 @@ class User {
     this.chatroom.send(message, this, to);
   }
 
-  receiver(message, from) {
+  receive(message, from) {
     console.log(`
       ${from.name} to ${this.name}: ${message}
     `);
@@ -21,7 +21,7 @@ class Chatroom {
   }
 
   register(user) {
-    users[users.name] = user;
+    this.users[this.users.name] = user;
     user.chatroom = this;
   }
 
@@ -29,13 +29,14 @@ class Chatroom {
     if (!to) {
       //mass message to group
       for (let key in users) {
-        if (users[key] !== from) {
-          users[key].receive(message, from);
+        if (this.users[key] !== from) {
+          this.users[key].receive(message, from);
         }
       }
       return;
     }
     //single user message
+    // console.log("to", to);
     return to.receive(message, from);
   }
 }
@@ -58,7 +59,8 @@ class Chatroom {
 //         return;
 //       }
 //       //single user message
-//       return to.receive(message, from);
+//       console.log("to", to);
+//       // return to.receive(message, from);
 //     },
 //   };
 // };
