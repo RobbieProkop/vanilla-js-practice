@@ -66,3 +66,25 @@ const page = new PageState();
 
 //init the first state
 page.init();
+
+// ui variables
+const home = document.getElementById("home"),
+  about = document.getElementById("about"),
+  contact = document.getElementById("contact");
+
+// EVENT LISTENERS
+// home
+home.addEventListener("click", (e) => {
+  e.preventDefault();
+  page.change(new homeState());
+});
+// about
+about.addEventListener("click", (e) => {
+  e.preventDefault();
+  page.change(new aboutState());
+});
+// contact
+contact.addEventListener("click", (e) => {
+  e.preventDefault();
+  page.change(new contactState());
+});
