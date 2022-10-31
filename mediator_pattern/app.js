@@ -28,7 +28,8 @@ class Chatroom {
   send(message, from, to) {
     if (!to) {
       //mass message to group
-      for (let key in users) {
+      for (let key in this.users) {
+        console.log("this.users :>> ", this.users);
         if (this.users[key] !== from) {
           this.users[key].receive(message, from);
         }
@@ -40,6 +41,8 @@ class Chatroom {
     return to.receive(message, from);
   }
 }
+
+//ES5 prototypes
 // const Chatroom = function () {
 //   let users = {}; // list of users
 //   return {
@@ -75,3 +78,5 @@ chatroom.register(jeff);
 chatroom.register(robbie);
 
 brad.send("Hello Jeff", jeff);
+robbie.send("hi Brad", brad);
+jeff.send("Hi ChatRoom");
