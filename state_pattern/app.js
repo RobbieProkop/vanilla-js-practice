@@ -60,3 +60,9 @@ const contactState = function (page) {
     </form>
   `;
 };
+
+// init pageState
+const page = new PageState();
+
+//init the first state
+page.init();
